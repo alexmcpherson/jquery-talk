@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>reveal.js</title>
+		<title>Deferreds</title>
 
-		<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Alex McPherson's 2012 jQuery Conf San Francisco presentation">
+		<meta name="author" content="Alex McPherson">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -31,104 +31,129 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3 class="inverted">CSS 3D Presentations</h3>
-					<script>
-						// Delicously hacky. Look away.
-						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
-					</script>
+					<h1><span class='code'>.when()</span> to use deferreds</h1>
+					<h3 class="inverted">Alex McPherson - Quick Left</h3>
 				</section>
 				
 				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is an easy to use, HTML based, presentation tool. You'll need a modern browser with 
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
-					<p>
-						<i><small>- <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small></i>
-					</p>
-				</section>
-				
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,<br/>
-							try pressing <a href="#/2/1">down</a>.
-						</p>
-						<a href="#/2/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Holistic Overview</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview!
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like:
-					</p>
+					<h2 class='code'>console.log(talkOutline);</h2>
 					<ul>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=cube">Cube</a></li>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=page">Page</a></li>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=concave">Concave</a></li>
-						<li><a href="http://lab.hakim.se/reveal-js/?transition=linear">Linear</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+						<li class='fragment'>I'm Alex, why you should listen to me</li>
+						<li class='fragment'>j@ubourg, and a little history</li>
+						<li class='fragment'>Code perusal</li>
+						<li class='fragment'>7 problems, 7 solutions</li>
+						<li class='fragment'>Questions</li>
 					</ul>
 				</section>
 				
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
+					<h2 class='code'>alex.define();</h2>
+					<ul>
+						<li class='fragment'>Boston &rarr; Boulder</li>
+						<li class='fragment'>Quick Left
+							<ul>
+								<li class='fragment'>Front end</li>
+								<li class='fragment'>Training/Apprenticeship</li>
+								<li class='fragment'>CU instructor</li>
+							</ul>
+						</li>
+					</ul>
+
+					<ul>
+						<li class='fragment'>Fortune 500 Financial
+							<ul>
+								<li class='fragment'>Code Performance</li>
+							</ul>
+						</li>
+						<li class='fragment'>
+							1-3 month startups
+							<ul>
+								<li class='fragment'>"Rapid Prototyping" toolchain</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 
 				<section>
+					<h2 class='code'>deferred.history</h2>
+					<ul>
+						<li class='fragment'>November 2009, $.ajax functionality requests</li>
+						<li class='fragment'>AJAX rewritten by Julian Aubourg</li>
+						<li class='fragment'>Suggested that it be exposed as an API</li>
+						<li class='fragment'>1/31/2010, 1.5 released</li>
+					</ul>
+				</section>
+
+				<section data-state="alert">
+					<h2 class='code'>alert("Caution");</h2>
+					<p>This is jQuery Conf, and a <em>lot</em> of this talk is about a jQuery feature, $.Deferred.</p>
+
+					<p class='fragment'>That being said, jQuery is a DOM library that mostly facilitates page decoration, events, and AJAX, so this talk will dive deeply into vanilla javascript, and might even mention other frameworks. Keep calm.</p>
+				</section>
+
+				<section>
+					<h2 class='code'>code.inspect()</h2>
+					<ul>
+						<li class='fragment'></li>
+						<li class='fragment'></li>
+						<li class='fragment'></li>
+						<li class='fragment'></li>
+						<li class='fragment'></li>
+					</ul>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>1. Bundling Ajax calls</h2>
+						<!-- $.when vs. other options -->
+					</section>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>2. Template Pattern</h2>
+						<!-- May or may not need data -->
+					</section>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>3. Publisher/Subscriber</h2>
+						<!-- Addy link -->
+					</section>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>4. Cache money</h2>
+						<!-- Like our QueryEngine -->
+					</section>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>5. Pretty Syntax and DSLs</h2>
+						<!-- $.wait, API wrappers, etc -->
+					</section>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>6. Multiple Callbacks</h2>
+						<!-- Many success handlers -->
+					</section>
+				</section>
+
+				<section>
+					<h2>talk.resolve();</h2>
+
+					<p>Quick Left - quickleft.com</p>
+					<p>@alexmcpherson</p>
+					<p>McPhersonIndustries.com</p>
+				</section>
+
+
+<!--		<section>
 					<section data-state="alert">
 						<h2>Global State</h2>
 						<p>
@@ -152,9 +177,9 @@
 							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
 						</a>
 					</section>
-				</section>
+				</section> -->
 
-				<section data-state="customevent">
+<!-- 				<section data-state="customevent">
 					<h2>Custom Events</h2>
 					<p>
 						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
@@ -163,21 +188,9 @@
 	alert( '"customevent" has fired' );
 } );
 					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
+				</section> -->
 				
-				<section>
+<!-- 				<section>
 					<h2>Pretty Code</h2>
 					<pre><code contenteditable>
 var supports3DTransforms =  document.body.style['webkitPerspective'] !== undefined || 
@@ -203,47 +216,8 @@ function linkify( selector ) {
 linkify( 'a' );
 					</code></pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-				
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,<br/>
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
+				</section> -->
 
-				<section>
-					<h2>Fragmented Views</h2>
-					<p>Hit the next arrow...</p>
-					<p class="fragment">... to step through ...</p>
-					<ol>
-						<li class="fragment"><code>any type</code></li>
-						<li class="fragment"><em>of view</em></li>
-						<li class="fragment"><strong>fragments</strong></li>
-					</ol>
-				</section>
-				
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
-						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png">
-					</a>
-				</section>
-				
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on github</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Read more on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-				
-				<section>
-					<h1>THE END</h1>
-					<h3 class="inverted">BY Hakim El Hattab / hakim.se</h3>
-				</section>
 			</div>
 
 			<!-- The navigational controls UI -->
