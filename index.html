@@ -81,7 +81,92 @@
 						<li class='fragment'>AJAX rewritten by Julian Aubourg</li>
 						<li class='fragment'>Suggested that it be exposed as an API</li>
 						<li class='fragment'>1/31/2010, 1.5 released</li>
+						<li class='fragment'>Implementation 'based on' the CommonJS Promises/A proposal</li>
 					</ul>
+				</section>
+
+				<section>
+					<h2 class='code'>code.inspect()</h2>
+					<ul>
+						<li class='fragment'>
+							<span>
+								A Deferred is a state object - 'pending' or 'resolved' stored in a Promise object
+							</span>
+<pre>
+	<code>
+var def = $.Deferred(); //def.state() === 'pending'
+<span class='fragment'>
+    def.resolve();      //def.state() === 'resolved'
+</span>
+	</code>
+</pre>
+						</li>
+
+						<li class='fragment'>
+							<span>
+								Callback management - Always, Done, Fail
+							</span>
+<pre>
+	<code>
+var def = $.Deferred();
+<span class='fragment'>
+    def.done(function() {
+    	console.log("Deferred resolved!");
+    });
+</span>
+<span class='fragment'>
+    def.resolve(); //logs "Deferred resolved!"
+</span>
+	</code>
+</pre>
+						</li>
+
+						<li class='fragment'>
+							<span>
+								Methods always returns a deferred for chaining
+							</span>
+							<pre>
+								<code>
+									var def = $.Deferred;
+								</code>
+							</pre>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class='code'>code.inspect()</h2>
+
+					<h3 class='fragment'>Callback Management: </h3>
+					<ul class='fragment'>
+						<li>deferred.always()</li>
+						<li>deferred.done()</li>
+						<li>deferred.fail()</li>
+					</ul>
+
+					<h3 class='fragment'>Change State: </h3>
+					<ul class='fragment'>
+						<li>deferred.reject()</li>
+						<li>deferred.rejectWith(args)</li>
+						<li>deferred.resolve()</li>
+						<li>deferred.resolveWith(args)</li>
+					</ul>
+
+					<h3 class='fragment'>Inspect State: </h3>
+					<ul class='fragment'>
+						<li>deferred.isRejected()</li>
+						<li>deferred.isResolved()</li>
+						<li>deferred.state()</li>
+					</ul>
+
+					<h3 class='fragment'>Chaining Utilities: </h3>
+					<ul class='fragment'>
+						<li>deferred.pipe()</li>
+						<li>deferred.then()</li>
+						<li>deferred.when()</li>
+					</ul>
+
+
 				</section>
 
 				<section data-state="alert">
@@ -91,21 +176,14 @@
 					<p class='fragment'>That being said, jQuery is a DOM library that mostly facilitates page decoration, events, and AJAX, so this talk will dive deeply into vanilla javascript, and might even mention other frameworks. Keep calm.</p>
 				</section>
 
-				<section>
-					<h2 class='code'>code.inspect()</h2>
-					<ul>
-						<li class='fragment'></li>
-						<li class='fragment'></li>
-						<li class='fragment'></li>
-						<li class='fragment'></li>
-						<li class='fragment'></li>
-					</ul>
-				</section>
 
 				<section data-state="problem">
 					<section>
 						<h2>1. Bundling Ajax calls</h2>
 						<!-- $.when vs. other options -->
+					</section>
+					<section>
+						<h2>Task at hand:</h2>
 					</section>
 				</section>
 
