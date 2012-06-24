@@ -121,16 +121,6 @@ var def = $.Deferred();
 </pre>
 						</li>
 
-						<li class='fragment'>
-							<span>
-								Methods always returns a deferred for chaining
-							</span>
-							<pre>
-								<code>
-									var def = $.Deferred;
-								</code>
-							</pre>
-						</li>
 					</ul>
 				</section>
 
@@ -165,8 +155,6 @@ var def = $.Deferred();
 						<li>deferred.then()</li>
 						<li>deferred.when()</li>
 					</ul>
-
-
 				</section>
 
 				<section data-state="alert">
@@ -180,11 +168,101 @@ var def = $.Deferred();
 				<section data-state="problem">
 					<section>
 						<h2>1. Bundling Ajax calls</h2>
+						<h4>Task at hand:</h4>
+						<p>Render a small sidebar that needs data from 3 sources.</p>
+						<h4>First attempt:</h4>
+<pre>
+	<code>
+$.ajax({
+  success: function() {<span class='fragment'>
+    $.ajax({<span class='fragment'>
+      //inception-like mess</span>
+    });</span>
+  }
+});
+	</code>
+</pre>
 						<!-- $.when vs. other options -->
 					</section>
+
 					<section>
-						<h2>Task at hand:</h2>
+						<h2>1. Bundling Ajax calls</h2>
+						<h4>Task at hand:</h4>
+						<p>Render a small sidebar that needs data from 3 sources.</p>
+						<h4>Second attempt:</h4>
+<pre>
+	<code>
+var ajaxCallsCompleted = [];<span class='fragment'>
+
+$.ajax({
+  success: function() {
+  	ajaxCallsCompleted.push('gotAddress');
+  	checkDataCalls();
+  }
+});</span>
+<span class='fragment'>
+$.ajax({
+  success: function() {
+  	ajaxCallsCompleted.push('gotTweets');
+  	checkDataCalls();
+  }
+});</span>
+<span class='fragment'>
+$.ajax({
+  success: function() {
+  	ajaxCallsCompleted.push('gotFacebook');
+  	checkDataCalls();
+  }
+});
+</span>
+<span class='fragment'>
+var checkDataCalls = function() {
+	//this checks for all 3 values in the completed array, then calls 'render'
+}
+</span>
+	</code>
+</pre>
 					</section>
+
+					<section>
+						<h2>1. Bundling Ajax calls</h2>
+						<h4>Task at hand:</h4>
+						<p>Render a small sidebar that needs data from 3 sources.</p>
+						<h4>Deferreds!</h4>
+
+<pre>
+	<code>
+<span class='fragment'>
+var getAddress = function() {
+  return $.ajax({
+    //returns a deferred, this is key
+  });
+}
+</span>
+<span class='fragment'>
+var getTweets = function() {
+  return $.ajax({
+
+  });
+}
+
+var getFacebook = function() {
+  return $.ajax({
+
+  });
+}
+</span>
+<span class='fragment'>
+$.when( getAddress(), getTweets(), getFacebook() ).then(function(){
+  //render sidebar
+})
+</span>
+
+	</code>
+</pre>
+
+					</section>
+
 				</section>
 
 				<section data-state="problem">
