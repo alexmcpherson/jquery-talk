@@ -183,7 +183,6 @@ $.ajax({
 });
 	</code>
 </pre>
-						<!-- $.when vs. other options -->
 					</section>
 
 					<section>
@@ -218,7 +217,7 @@ $.ajax({
 </span>
 <span class='fragment'>
 var checkDataCalls = function() {
-	//this checks for all 3 values in the completed array, then calls 'render'
+  //this checks for all 3 values in the completed array, then calls 'render'
 }
 </span>
 	</code>
@@ -306,7 +305,7 @@ var changePage = function(page) {
 				</section>
 
 				<section data-state="problem">
-					<h2>2. Cache Money</h2>
+					<h2>3. Cache Money</h2>
 					<div class='fragment'>
 						<h4>Task at hand:</h4>
 						<p>You are using a rate limited API. Don't break the bank!</p>
@@ -347,8 +346,91 @@ TweetSearcher('alexmcpherson').done(function(data){<span class='fragment'>
 				<section data-state="problem">
 					<section>
 						<h2>4. Pretty Syntax and DSLs</h2>
-						<!-- $.wait, API wrappers, etc -->
+						<div class='fragment'>
+							<h4>Task at hand:</h4>
+							<p>Write pretty code</p>
+						</div>
+
+<pre class='fragment'>
+	<code>
+		<span class='fragment'>
+a) setTimeout(500, myFunction)
+b) setTimeOut(myFunction, 500)
+c) setTimeOut(500, myFunction)
+d) setTimeout(myFunction, 500)<span class='fragment'> <--</span>
+		</span>
+	</code>
+</pre>
+
 					</section>
+
+					<section>
+						<h2>4. Pretty Syntax and DSLs</h2>
+						<div>
+							<h4>Task at hand:</h4>
+							<p>Fix that silly timeout syntax</p>
+						</div>
+
+<pre class='fragment'>
+	<code>
+$.wait = function(duration) {
+  return $.Deferred(function(def) {
+    setTimout(def.resolve, duration);
+  })
+}
+		<span class='fragment'>
+$.wait(1000).then( goMakeTea() );
+		</span>
+	</code>
+</pre>
+
+					</section>
+
+					<section>
+						<h2>4. Pretty Syntax and DSLs</h2>
+						<div>
+							<h4>Task at hand:</h4>
+							<p>Write pretty code wrapping an API</p>
+						</div>
+
+<pre class='fragment'>
+	<code>
+var MyTwitter = {
+  search: function (username) {
+    var def = $.ajax({
+      //etc etc
+    });<span class='fragment'>
+    return def.promise();</span>
+  }
+}
+
+<span class='fragment'>
+MyTwitter.search('alexmcpherson').done(renderTweets());
+</span>
+
+<span class='fragment'>
+$.when( MyTwitter.search('alexmcpherson'), MyTwitter.search('wookiehangover') ).done(
+  function(def1, def2) {<span class='fragment'>
+    //def1 = [
+    //  {
+    //    actual tweet object
+    //  },
+    //
+    //  'success',
+    //
+    //  {
+    //    //deferred object from first search call
+    //  }
+    //]</span>
+  }
+);
+
+</span>
+	</code>
+</pre>
+
+					</section>
+
 				</section>
 
 				<section data-state="problem">
