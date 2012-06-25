@@ -158,12 +158,12 @@ var def = $.Deferred();
 					</ul>
 				</section>
 
-				<section data-state="alert">
+<!-- 				<section data-state="alert">
 					<h2 class='code'>alert("Caution");</h2>
 					<p>This is jQuery Conf, and a <em>lot</em> of this talk is about a jQuery feature, $.Deferred.</p>
 
 					<p class='fragment'>That being said, jQuery is a DOM library that mostly facilitates page decoration, events, and AJAX, so this talk will dive deeply into vanilla javascript, and might even mention other frameworks. Keep calm.</p>
-				</section>
+				</section> -->
 
 
 				<section data-state="problem">
@@ -437,6 +437,19 @@ $.when( MyTwitter.search('alexmcpherson'), MyTwitter.search('wookiehangover') ).
 					<section>
 						<h2>5. Multiple Callbacks</h2>
 						<!-- Many success handlers -->
+					</section>
+				</section>
+
+				<section data-state="problem">
+					<section>
+						<h2>Keys for success: </h2>
+						<ol>
+							<li class='fragment'>When in doubt, return a deferred</li>
+							<li class='fragment'>Better yet, use def.promise()</li>
+							<li class='fragment'>Powerful as properties on an object</li>
+							<li class='fragment'>Make your life easier</li>
+							<li class='fragment'>Make JS prettier</li>
+						</ol>
 					</section>
 				</section>
 
