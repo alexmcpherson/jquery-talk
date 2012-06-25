@@ -41,57 +41,108 @@
 						<li class='fragment'>I'm Alex, why you should listen to me</li>
 						<li class='fragment'>j@ubourg, and a little history</li>
 						<li class='fragment'>Code perusal</li>
-						<li class='fragment'>7 problems, 7 solutions</li>
+						<li class='fragment'>5 problems, 5 solutions</li>
+						<li class='fragment'>Keys to success</li>
 						<li class='fragment'>Questions</li>
 					</ul>
 				</section>
 				
 				<section>
 					<h2 class='code'>alex.define();</h2>
-					<ul>
-						<li class='fragment'>Boston &rarr; Boulder</li>
-						<li class='fragment'>Quick Left
-							<ul>
-								<li class='fragment'>Front end</li>
-								<li class='fragment'>Training/Apprenticeship</li>
-								<li class='fragment'>CU instructor</li>
-							</ul>
-						</li>
-					</ul>
+					<h4>Who is this guy</h4>
+					
+					<section>
+						<h4 class='fragment'>Important, crucial, life-altering facts:</h4>
+						<ul>
+							<li class='fragment'>Sublime Text 2 || vim</li>
+							<li class='fragment'>Railscasts 2 colors</li>
+							<li class='fragment'>I prefer this:
 
-					<ul>
-						<li class='fragment'>Fortune 500 Financial
-							<ul>
-								<li class='fragment'>Code Performance</li>
-							</ul>
-						</li>
-						<li class='fragment'>
-							1-3 month startups
-							<ul>
-								<li class='fragment'>"Rapid Prototyping" toolchain</li>
-							</ul>
-						</li>
-					</ul>
+<pre>
+	<code>
+var presenter = {
+  name: 'Alex',
+  age:  28,
+  city: 'Boulder'
+};
+	</code>
+</pre>
+
+							</li>
+							<li class='fragment'>To this:
+<pre>
+	<code>
+var presenter = {
+  name:  'Alex'
+  ,age:  28
+  ,city: 'Boulder'
+};
+//Comma first is for the birds
+	</code>
+</pre>
+
+							</li>
+
+							<li class='fragment'>And I always put in my semicolons</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4 class='fragment'>Personal:</h4>
+						<ul>
+							<li class='fragment'>Boston &rarr; Boulder</li>
+							<li class='fragment'>Quick Left
+								<ul>
+									<li class='fragment'>Front end engineer</li>
+									<li class='fragment'>Develops our training and apprenticeship programs</li>
+									<li class='fragment'>Teaches Ruby on Rails and javascript to grad students at CU - Boulder</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				
+					<section>
+						<h4 class='fragment'>Skillsets:</h4>
+
+						<ul>
+							<li class='fragment'>Fortune 500 Financial
+								<ul>
+									<li class='fragment'>Code performance</li>
+									<li class='fragment'>Browser compatibility</li>
+								</ul>
+							</li>
+							<li class='fragment'>
+								1-3 month startup products
+								<ul>
+									<li class='fragment'>"Rapid prototyping" toolchain (Get Stuff Done)</li>
+									<li class='fragment'>Thick clients, Backbone.js, websockets, cutting edge</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
 					<h2 class='code'>deferred.history</h2>
 					<ul>
 						<li class='fragment'>November 2009, $.ajax functionality requests</li>
-						<li class='fragment'>AJAX rewritten by Julian Aubourg</li>
-						<li class='fragment'>Suggested that it be exposed as an API</li>
-						<li class='fragment'>1/31/2010, 1.5 released</li>
+						<li class='fragment'>Entirely rewritten AJAX by Julian Aubourg</li>
+						<li class='fragment'>Gutted internals, used clever internal API</li>
+						<li class='fragment'>Suggested that it be exposed as a public object</li>
+						<li class='fragment'>Reworked, and in January, 2010, 1.5 released</li>
 						<li class='fragment'>Implementation 'based on' the CommonJS Promises/A proposal</li>
-						<li class='fragment'>Used all over jQuery, notably in $.ajax and effects</li>
+						<li class='fragment'>Used internally in jQuery, notably in $.ajax and effects</li>
+						<li class='fragment'>Now it's our tool to figure out how to use.</li>
 					</ul>
 				</section>
 
 				<section>
 					<h2 class='code'>code.inspect()</h2>
+					<p>What the heck is a deferred object?</p>
 					<ul>
 						<li class='fragment'>
 							<span>
-								A Deferred is a state object - 'pending' or 'resolved' stored in a Promise object
+								A Deferred is a state storage object - 'pending' or 'resolved | rejected'
 							</span>
 <pre>
 	<code>
@@ -128,68 +179,84 @@ var def = $.Deferred();
 				<section>
 					<h2 class='code'>code.inspect()</h2>
 
-					<h3 class='fragment'>Callback Management: </h3>
-					<ul class='fragment'>
-						<li>deferred.always()</li>
-						<li>deferred.done()</li>
-						<li>deferred.fail()</li>
-					</ul>
+					<div class='groups fragment'>
+						<h3>Callback Management: </h3>
+						<ul>
+							<li>deferred.always()</li>
+							<li>deferred.done()</li>
+							<li>deferred.fail()</li>
+						</ul>
+					</div>
 
-					<h3 class='fragment'>Change State: </h3>
-					<ul class='fragment'>
-						<li>deferred.reject()</li>
-						<li>deferred.rejectWith(args)</li>
-						<li>deferred.resolve()</li>
-						<li>deferred.resolveWith(args)</li>
-					</ul>
+					<div class='groups fragment'>
+						<h3>Change State: </h3>
+						<ul>
+							<li>deferred.reject(args)</li>
+							<li>deferred.rejectWith(context, args)</li>
+							<li>deferred.resolve(args)</li>
+							<li>deferred.resolveWith(context, args)</li>
+						</ul>
+					</div>
 
-					<h3 class='fragment'>Inspect State: </h3>
-					<ul class='fragment'>
-						<li>deferred.isRejected()</li>
-						<li>deferred.isResolved()</li>
-						<li>deferred.state()</li>
-					</ul>
+					<div class='groups fragment'>
+						<h3>Inspect State: </h3>
+						<ul>
+							<li>deferred.isRejected()</li>
+							<li>deferred.isResolved()</li>
+							<li>deferred.state()</li>
+						</ul>
+					</div>
 
-					<h3 class='fragment'>Chaining Utilities: </h3>
-					<ul class='fragment'>
-						<li>deferred.pipe()</li>
-						<li>deferred.then()</li>
-						<li>deferred.when()</li>
-					</ul>
+					<div class='groups fragment'>
+						<h3>Chaining Utilities: </h3>
+						<ul>
+							<li>deferred.pipe()</li>
+							<li>deferred.then()</li>
+							<li>deferred.when()</li>
+						</ul>
+					</div>
 				</section>
 
-<!-- 				<section data-state="alert">
-					<h2 class='code'>alert("Caution");</h2>
-					<p>This is jQuery Conf, and a <em>lot</em> of this talk is about a jQuery feature, $.Deferred.</p>
-
-					<p class='fragment'>That being said, jQuery is a DOM library that mostly facilitates page decoration, events, and AJAX, so this talk will dive deeply into vanilla javascript, and might even mention other frameworks. Keep calm.</p>
-				</section> -->
+				<section>
+					<h2 class='code'>examples.list()</h2>
+				</section> 
 
 
 				<section data-state="problem">
 					<section>
 						<h2>1. Bundling Ajax calls</h2>
-						<h4>Task at hand:</h4>
-						<p>Render a small sidebar that needs data from 3 sources.</p>
+						<div class='fragment'>
+							<h4>Task at hand:</h4>
+							<p>Render a small sidebar that needs data from 3 sources.</p>
+						</div>
+						<div class='fragment'>
+
 						<h4>First attempt:</h4>
 <pre>
 	<code>
 $.ajax({
   success: function() {<span class='fragment'>
-    $.ajax({<span class='fragment'>
-      //inception-like mess</span>
-    });</span>
+    $.ajax({</span><span class='fragment'>
+       success: function() {'>
+         $.ajax({
+         //inception-like mess
+      });
+    });
   }
-});
+});</span>
 	</code>
 </pre>
+					</div>
 					</section>
 
 					<section>
 						<h2>1. Bundling Ajax calls</h2>
-						<h4>Task at hand:</h4>
-						<p>Render a small sidebar that needs data from 3 sources.</p>
-						<h4>Second attempt:</h4>
+							<h4>Task at hand:</h4>
+							<p>Render a small sidebar that needs data from 3 sources.</p>
+						<div class='fragment'>
+							<h4>Second attempt:</h4>
+						</div>
+						<div class='fragment'>
 <pre>
 	<code>
 var ajaxCallsCompleted = [];<span class='fragment'>
@@ -217,20 +284,24 @@ $.ajax({
 </span>
 <span class='fragment'>
 var checkDataCalls = function() {
-  //this checks for all 3 values in the completed array, then calls 'render'
+  //this checks for all 3 values in the completed array, then 
+  //calls 'render'
 }
 </span>
 	</code>
 </pre>
+					</div>
 					</section>
 
 					<section>
 						<h2>1. Bundling Ajax calls</h2>
 						<h4>Task at hand:</h4>
 						<p>Render a small sidebar that needs data from 3 sources.</p>
-						<h4>Deferreds!</h4>
+						<div class='fragment'>
+							<h4>Deferreds!</h4>
+						</div>
 
-<pre>
+<pre class='fragment'>
 	<code>
 <span class='fragment'>
 var getAddress = function() {
@@ -253,8 +324,16 @@ var getFacebook = function() {
 }
 </span>
 <span class='fragment'>
-$.when( getAddress(), getTweets(), getFacebook() ).then(function(){
+$.when( 
+
+  getAddress(), 
+  getTweets(), 
+  getFacebook() 
+
+).then(function(){
+
   //render sidebar
+
 })
 </span>
 
@@ -272,7 +351,7 @@ $.when( getAddress(), getTweets(), getFacebook() ).then(function(){
 						<p>Make a single page app with various pages that load, some of which need data.</p>
 					</div>
 					<h4 class='fragment'>Deferreds!</h4>
-<pre>
+<pre class='fragment'>
 	<code><span class='fragment'>
 var AboutPage = function(){};
 
@@ -308,11 +387,11 @@ var changePage = function(page) {
 					<h2>3. Cache Money</h2>
 					<div class='fragment'>
 						<h4>Task at hand:</h4>
-						<p>You are using a rate limited API. Don't break the bank!</p>
+						<p>You are using a rate limited API. Don't break your service!</p>
 					</div>
 					<h4 class='fragment'>Deferreds!</h4>
 
-<pre>
+<pre class='fragment'>
 	<code>
 var TweetSearcher = function(username) {<span class='fragment'>
   var cache = {};</span><span class='fragment'>
@@ -409,7 +488,12 @@ MyTwitter.search('alexmcpherson').done(renderTweets());
 </span>
 
 <span class='fragment'>
-$.when( MyTwitter.search('alexmcpherson'), MyTwitter.search('wookiehangover') ).done(
+$.when( 
+
+  MyTwitter.search('alexmcpherson'), 
+  MyTwitter.search('wookiehangover') 
+
+).done(
   function(def1, def2) {<span class='fragment'>
     //def1 = [
     //  {
@@ -445,7 +529,7 @@ $.when( MyTwitter.search('alexmcpherson'), MyTwitter.search('wookiehangover') ).
 						<h2>Keys for success: </h2>
 						<ol>
 							<li class='fragment'>When in doubt, return a deferred</li>
-							<li class='fragment'>Better yet, use def.promise()</li>
+							<li class='fragment'>Better yet, return a def.promise()</li>
 							<li class='fragment'>Powerful as properties on an object</li>
 							<li class='fragment'>Make your life easier</li>
 							<li class='fragment'>Make JS prettier</li>
@@ -459,6 +543,14 @@ $.when( MyTwitter.search('alexmcpherson'), MyTwitter.search('wookiehangover') ).
 					<p>Quick Left - quickleft.com</p>
 					<p>@alexmcpherson</p>
 					<p>McPhersonIndustries.com</p>
+
+					<h4 class='credits'>Credits: </h4>
+					<ul>
+						<li>j@ubourg</li>
+						<li>http://bit.ly/JvD71E [MSDN Addy and Julian article]</li>
+						<li>http://bit.ly/MIOIK2 [Intridea 'Fun with jQuery Defferd']</li>
+						<li>Quick Left (esp. Nico and Sam!)</li>
+					</ul>
 				</section>
 
 
