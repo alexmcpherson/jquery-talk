@@ -82,6 +82,7 @@
 						<li class='fragment'>Suggested that it be exposed as an API</li>
 						<li class='fragment'>1/31/2010, 1.5 released</li>
 						<li class='fragment'>Implementation 'based on' the CommonJS Promises/A proposal</li>
+						<li class='fragment'>Used all over jQuery, notably in $.ajax and effects</li>
 					</ul>
 				</section>
 
@@ -268,7 +269,39 @@ $.when( getAddress(), getTweets(), getFacebook() ).then(function(){
 				<section data-state="problem">
 					<section>
 						<h2>2. Template Pattern</h2>
-						<!-- May or may not need data -->
+						<div class='fragment'>
+							<h4>Task at hand:</h4>
+							<p>Make a single page app with various pages that load, some of which need data.</p>
+						</div>
+						<h4 class='fragment'>Deferreds!</h4>
+<pre>
+	<code><span class='fragment'>
+var AboutPage = function(){};
+
+AboutPage.prototype = {
+  init: function() {
+    return this.getInfo();
+  }
+}</span>
+<span class='fragment'>
+var ContactPage = function(){};
+
+ContactPage.prototype = {
+  init: function() {<span class='fragment'>
+    return $.Deferred().resolve();</span>
+  }
+}
+</span>
+<span class='fragment'>
+var changePage = function(page) {
+  page.init().done(function() {
+    page.render();
+  });
+};
+</span>
+	</code>
+</pre>
+
 					</section>
 				</section>
 
