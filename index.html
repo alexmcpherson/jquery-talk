@@ -41,7 +41,7 @@
 						<li class='fragment'>I'm Alex, why you should listen to me</li>
 						<li class='fragment'>j@ubourg, and a little history</li>
 						<li class='fragment'>Code perusal</li>
-						<li class='fragment'>5 problems, 5 solutions</li>
+						<li class='fragment'>6 problems, 6 solutions</li>
 						<li class='fragment'>Keys to success</li>
 						<li class='fragment'>Questions</li>
 					</ul>
@@ -563,8 +563,45 @@ var slowCounter = function(start, limit) {
 				</section>
 
 				<section data-state="problem">
-					<h2>6. Managing Animations</h2>
-					<!-- fx queue -->
+					<section>
+						<h2>6. Managing Animations</h2>
+						<p>All helper methods attach promises to their nodes</p>
+						<ul class='fragment'>
+							<li>.animate()</li>
+							<li>.fadeIn()</li>
+							<li>.fadeOut()</li>
+							<li>.hide()</li>
+							<li>.show()</li>
+							<li>.slideUp()</li>
+							<li>.slideDown()</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>6. Managing Animations</h2>
+
+<pre class='fragment'>
+	<code><span class='fragment'>
+var complexRemove = function() {
+  var defs = [];
+</span><span class='fragment'>
+  defs.push( $('h1').delay(Math.random()*5000).fadeOut() );
+</span><span class='fragment'>
+  defs.push( $('div').fadeIn(100).delay(200).slideDown() );
+</span><span class='fragment'>
+  return $.when.apply(null, defs);
+}</span>
+
+<span class='fragment'>
+$.when( complexRemove() ).done(function() {
+  window.close();
+});
+</span>
+	</code>
+</pre>
+
+					</section>
+
 				</section>
 
 				<section>
@@ -573,6 +610,7 @@ var slowCounter = function(start, limit) {
 						<ul>
 							<li class='fragment'>Registering multiple callbacks!</li>
 							<li class='fragment'>Post-resolution binding!</li>
+							<li class='fragment'>Helpful .then(d, f) shortcut syntax!</li>
 							<li class='fragment'>Dependent AJAX calls!</li>
 							<li class='fragment'>Memoizing expensive operations!</li>
 							<li class='fragment'>Implementing a publisher/subscriber pattern!</li>
