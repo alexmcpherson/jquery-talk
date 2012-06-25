@@ -201,9 +201,9 @@ var def = $.Deferred();
 					<div class='groups fragment'>
 						<h3>Inspect State: </h3>
 						<ul>
-							<li>deferred.isRejected()</li>
-							<li>deferred.isResolved()</li>
 							<li>deferred.state()</li>
+							<li><del>deferred.isRejected()</del></li>
+							<li><del>deferred.isResolved()</del></li>
 						</ul>
 					</div>
 
@@ -357,7 +357,8 @@ var AboutPage = function(){};
 
 AboutPage.prototype = {
   init: function() {
-    return this.getInfo();
+    this.def = this.getInfo();
+    return this.def;
   }
 }</span>
 <span class='fragment'>
@@ -365,7 +366,8 @@ var ContactPage = function(){};
 
 ContactPage.prototype = {
   init: function() {<span class='fragment'>
-    return $.Deferred().resolve();
+    this.def = $.Deferred().resolve();
+    return this.def;
     //A deferred not neccessary here, $.when resolved immediately for any type
   </span>
   }
@@ -373,7 +375,7 @@ ContactPage.prototype = {
 </span>
 <span class='fragment'>
 var changePage = function(page) {
-  page.init().done(function() {
+  page.def.done(function() {
     page.render();
   });
 };
@@ -519,8 +521,22 @@ $.when(
 
 				<section data-state="problem">
 					<section>
-						<h2>5. Multiple Callbacks</h2>
-						<!-- Many success handlers -->
+						<h2>5. Managing Animations</h2>
+						<!-- fx queue -->
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Things I didn't even mention but are still awesome!</h2>
+						<ul>
+							<li class='fragment'>.progress(callback) and .notify() methods!</li>
+							<li class='fragment'>Registering multiple callbacks!</li>
+							<li class='fragment'>Post-resolution binding!</li>
+							<li class='fragment'>Dependent AJAX calls!</li>
+							<li class='fragment'>Memoizing expensive operations!</li>
+							<li class='fragment'>Implementing a publisher/subscriber pattern!</li>
+						</ul>
 					</section>
 				</section>
 
