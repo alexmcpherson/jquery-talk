@@ -218,7 +218,7 @@ var def = $.Deferred();
 				</section>
 
 				<section>
-					<h2 class='code'>examples.list()</h2>
+					<h2 class='code'>bringEmOut(examples)</h2>
 				</section> 
 
 
@@ -520,17 +520,57 @@ $.when(
 				</section>
 
 				<section data-state="problem">
-					<section>
-						<h2>5. Managing Animations</h2>
-						<!-- fx queue -->
-					</section>
+					<h2>5. Arbitrary Deferred 'events'</h2>
+					<ul>
+						<li class='fragment'>.progress(args) handlers</li>
+						<li class='fragment'>.notify(args) calls</li>
+					</ul>
+
+<pre class='fragment'>
+	<code>
+var watcher = $.Deferred();
+<span class='fragment'>
+watcher.progress(function(progress, limit) {
+  if (progress == (limit - 50)) {
+    console.log('Halfway there!');
+  }
+});
+</span>
+<span class='fragment'>
+watcher.done(function(){
+  console.log('Done, from done handler!');
+});
+</span>
+<span class='fragment'>
+var slowCounter = function(start, limit) {
+  
+  watcher.notify(start, limit);
+
+  if (start == limit) {
+    watcher.resolve();
+    return;
+  }
+  
+  setTimeout(function() {
+    slowCounter(start + 1, limit);
+  }, 10);
+
+}
+</span>
+	</code>
+</pre>
+
+				</section>
+
+				<section data-state="problem">
+					<h2>6. Managing Animations</h2>
+					<!-- fx queue -->
 				</section>
 
 				<section>
 					<section>
 						<h2>Things I didn't even mention but are still awesome!</h2>
 						<ul>
-							<li class='fragment'>.progress(callback) and .notify() methods!</li>
 							<li class='fragment'>Registering multiple callbacks!</li>
 							<li class='fragment'>Post-resolution binding!</li>
 							<li class='fragment'>Dependent AJAX calls!</li>
