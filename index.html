@@ -288,7 +288,9 @@ var ContactPage = function(){};
 
 ContactPage.prototype = {
   init: function() {<span class='fragment'>
-    return $.Deferred().resolve();</span>
+    return $.Deferred().resolve();
+    //A deferred not neccessary here, $.when resolved immediately for any type
+  </span>
   }
 }
 </span>
