@@ -267,13 +267,12 @@ $.when( getAddress(), getTweets(), getFacebook() ).then(function(){
 				</section>
 
 				<section data-state="problem">
-					<section>
-						<h2>2. Template Pattern</h2>
-						<div class='fragment'>
-							<h4>Task at hand:</h4>
-							<p>Make a single page app with various pages that load, some of which need data.</p>
-						</div>
-						<h4 class='fragment'>Deferreds!</h4>
+					<h2>2. Template Pattern</h2>
+					<div class='fragment'>
+						<h4>Task at hand:</h4>
+						<p>Make a single page app with various pages that load, some of which need data.</p>
+					</div>
+					<h4 class='fragment'>Deferreds!</h4>
 <pre>
 	<code><span class='fragment'>
 var AboutPage = function(){};
@@ -304,33 +303,57 @@ var changePage = function(page) {
 	</code>
 </pre>
 
-					</section>
+				</section>
+
+				<section data-state="problem">
+					<h2>2. Cache Money</h2>
+					<div class='fragment'>
+						<h4>Task at hand:</h4>
+						<p>You are using a rate limited API. Don't break the bank!</p>
+					</div>
+					<h4 class='fragment'>Deferreds!</h4>
+
+<pre>
+	<code>
+var TweetSearcher = function(username) {<span class='fragment'>
+  var cache = {};</span><span class='fragment'>
+  if (!cache[username]) {
+    cache[username] = $.getJSON('//search.twitter.com/search.json?callback=?&q='+username);
+  }
+
+  return cache[username];
+  </span>
+}
+<span class='fragment'>
+TweetSearcher('alexmcpherson').done(function(data){<span class='fragment'>
+  console.log(data.results);
+  //Made a round trip
+  </span>
+});
+</span>
+<span class='fragment'>
+TweetSearcher('alexmcpherson').done(function(data){<span class='fragment'>
+  console.log(data.results);
+  //Did NOT make a round trip. The deferred passes the same params from the original callback
+  </span>
+});
+</span>
+
+	</code>
+</pre>
+
 				</section>
 
 				<section data-state="problem">
 					<section>
-						<h2>3. Publisher/Subscriber</h2>
-						<!-- Addy link -->
-					</section>
-				</section>
-
-				<section data-state="problem">
-					<section>
-						<h2>4. Cache money</h2>
-						<!-- Like our QueryEngine -->
-					</section>
-				</section>
-
-				<section data-state="problem">
-					<section>
-						<h2>5. Pretty Syntax and DSLs</h2>
+						<h2>4. Pretty Syntax and DSLs</h2>
 						<!-- $.wait, API wrappers, etc -->
 					</section>
 				</section>
 
 				<section data-state="problem">
 					<section>
-						<h2>6. Multiple Callbacks</h2>
+						<h2>5. Multiple Callbacks</h2>
 						<!-- Many success handlers -->
 					</section>
 				</section>
